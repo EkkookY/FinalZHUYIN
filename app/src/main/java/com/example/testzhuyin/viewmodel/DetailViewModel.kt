@@ -21,12 +21,13 @@ import com.example.testzhuyin.repo.DetailRepo
 import com.example.testzhuyin.utils.SDKUtils
 import kotlinx.coroutines.Dispatchers
 
-class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,DetailContract.Effect>(), LocationSource, AMapLocationListener {
+
 /**
  * 首页中民族跳转的详细页viewmodel层
  * 继承basevm的状态，方便统一
  *
  * */
+class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,DetailContract.Effect>(), LocationSource, AMapLocationListener {
 
     private val geoFenceClient = GeoFenceClient(SDKUtils.getApplicationContext())
     private var mLocationClient: AMapLocationClient? = null
@@ -64,6 +65,7 @@ class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,D
                 }
             }}
     }
+
 
     init {
         DetailRepo.initRingtone {
@@ -149,7 +151,7 @@ class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,D
     }
 
     /**
-     * 仅仅只是为了展示当前用户的位置，如果不需要，可以删除mLocationClient相关代码，地理围栏内部实现了定位，只是没有定位蓝点
+     * 展示当前用户的位置
      */
     private fun startMapLocation() {
         DetailRepo.initAMapLocationClient(mLocationClient,this) { client, option->
@@ -161,18 +163,6 @@ class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,D
     override fun onLocationChanged(amapLocation: AMapLocation?) {
         DetailRepo.handleLocationChange(amapLocation) { aMapLocation, msg ->
             if(null != aMapLocation) {
-                /*if(null == currentState.showGFAndLocationBounds) {
-                    // 这里是为了保证用户的位置和覆盖物的位置能都在视野范围内显示
-                    setState {
-                        copy(
-                            showGFAndLocationBounds = LatLngBounds(
-                                LatLng(currentState.gfCenterLatitude, currentState.gfCenterLongitude),
-                                LatLng(aMapLocation.latitude, aMapLocation.longitude)
-                            )
-                        )
-                    }
-                }*/
-                // 显示系统小蓝点
                 mListener?.onLocationChanged(aMapLocation)
             } else {
                 setEffect { DetailContract.Effect.Toast(msg) }
@@ -201,7 +191,7 @@ class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,D
         }
         deactivate()
         geoFenceClient.setGeoFenceListener(null)
-        // 清除所有围栏
+
         geoFenceClient.removeGeoFence()
         super.onCleared()
     }

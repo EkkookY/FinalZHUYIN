@@ -10,6 +10,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * 注册广播接收器
+ * */
+
 @Composable
 fun SystemBroadcastReceiver(
     systemActions: List<String>,
@@ -36,3 +40,4 @@ fun SystemBroadcastReceiver(
         }
     }
 }
+

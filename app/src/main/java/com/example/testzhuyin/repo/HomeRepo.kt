@@ -35,7 +35,6 @@ object HomeRepo {
     fun initEthnicityDataList(): List<EthnicityDataModel> {
         var dataJSON = ""
         try {
-            //获取assets资源管理器
             val assetManager = SDKUtils.getApplicationContext().assets
             val inputStream = InputStreamReader(assetManager.open("ethnicity_data.json"))
             dataJSON = inputStream.buffered().use(BufferedReader::readText)

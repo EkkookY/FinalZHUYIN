@@ -53,7 +53,6 @@ object DetailRepo {
 
     fun initMapUiSettings(): MapUiSettings {
         return MapUiSettings(
-            // 高德地图右上角：显示【定位按钮】
             myLocationButtonEnabled = true,
             isZoomEnabled = true,
             isZoomGesturesEnabled = true,
@@ -140,7 +139,8 @@ object DetailRepo {
     }
 
     /**
-     * 初始化LocationClient并启动定位蓝点定位
+     * 这里初始化LocationClient
+     * 启动定位蓝点定位
      */
     inline fun initAMapLocationClient(
         locationClient: AMapLocationClient?,
@@ -150,12 +150,12 @@ object DetailRepo {
         if(null == locationClient) {
             val newLocationClient = AMapLocationClient(SDKUtils.getApplicationContext())
             val locationClientOption = AMapLocationClientOption()
+
             newLocationClient.setLocationListener(listener)
             locationClientOption.locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
             newLocationClient.setLocationOption(locationClientOption)
             block.invoke(newLocationClient.apply { startLocation() }, locationClientOption)
-        }
-    }
+        } }
 
     inline fun handleLocationChange(amapLocation: AMapLocation?, block: (AMapLocation?, String?) -> Unit) {
         if (amapLocation != null) {
@@ -163,8 +163,7 @@ object DetailRepo {
                 block.invoke(amapLocation, null)
             } else {
                 block.invoke(null, "定位失败," + amapLocation.errorCode + ": " + amapLocation.errorInfo)
-            }
-        }
+            } }
     }
 
     fun initRingtone(block: (Ringtone) -> Unit) {
