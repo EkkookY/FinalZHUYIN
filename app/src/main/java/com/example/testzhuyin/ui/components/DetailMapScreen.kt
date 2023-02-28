@@ -59,12 +59,13 @@ import com.example.testzhuyin.viewmodel.DetailViewModel
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-internal fun DetailMapScreen(latitude: Double, longitude: Double, targetAssets: String) {
+internal fun DetailMapScreen(latitude: Double, longitude: Double, targetAssets: String,onBack:()->Unit) {
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition(LatLng(latitude, longitude), 14F, 0F, 0F)
     }
     val viewModel: DetailViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
+
     InitDetailPageEffect(viewModel, uiState, cameraPositionState, latitude, longitude)
 
 
@@ -158,6 +159,7 @@ internal fun DetailMapScreen(latitude: Double, longitude: Double, targetAssets: 
             sheetPeekHeight = 270.dp,
             sheetBackgroundColor = whiteplus,
         ) { innerPadding ->
+            AppTopBar(title = "民族详细页", onLeftIconClickListener = {onBack() })
             GDMap(
                 modifier = Modifier
                     .matchParentSize()

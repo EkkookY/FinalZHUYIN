@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.snapshotFlow
-import ccom.example.testzhuyin.utils.handlerGPSLauncher
+import com.example.testzhuyin.utils.handlerGPSLauncher
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.melody.map.gd_compose.position.CameraPositionState
 import com.example.testzhuyin.contract.DetailContract

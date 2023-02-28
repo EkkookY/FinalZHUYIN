@@ -14,6 +14,9 @@ import com.melody.map.gd_compose.overlay.PolylineNode
 import com.melody.map.gd_compose.overlay.RoutePlanOverlayNode
 import com.melody.map.gd_compose.utils.fastFirstOrNull
 
+/**
+ * 定义三个接口
+ **/
 internal interface MapNode {
     fun onAttached() {}
     fun onRemoved() {}
@@ -62,7 +65,6 @@ internal class MapApplier(
     private fun attachClickListeners() {
         // 设置Marker的点击事件，return true拦截
         map.setOnMarkerClickListener { marker ->
-            // 优先处理普通Marker的事件，不匹配，再去查找轨迹移动的Marker
             decorations.nodeForMarker(marker)?.onMarkerClick?.invoke(marker)?:
             (decorations.nodeForMovingPointOverlay(marker)?.onMarkerClick?.invoke(marker)?: false)
         }

@@ -17,6 +17,10 @@ import com.melody.map.gd_compose.poperties.MapUiSettings
 import com.melody.map.gd_compose.poperties.MapProperties
 import com.melody.map.gd_compose.position.CameraPositionState
 
+/**
+ * 老师，，此处调用的封装好的高德地图库
+ * 开源文件地址：https://github.com/TheMelody/OmniMap-Compose
+ * */
 internal class MapPropertiesNode(
     val map: AMap,
     var clickListeners: MapClickListeners,

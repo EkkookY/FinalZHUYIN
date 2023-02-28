@@ -30,12 +30,14 @@ import com.example.testzhuyin.R
 import com.example.testzhuyin.data.DataProvide
 import com.example.testzhuyin.data.Note
 import com.example.testzhuyin.model.NoticeContent
+import com.example.testzhuyin.ui.components.AppTopBar
 import com.example.testzhuyin.ui.components.SearchBar
 import com.example.testzhuyin.ui.theme.*
 
 
 @Composable
 fun TestPage(modifier: Modifier =Modifier,navController: NavController) {
+
 
     androidx.compose.foundation.Image(
         painter = painterResource(id = R.drawable.background),
@@ -44,13 +46,11 @@ fun TestPage(modifier: Modifier =Modifier,navController: NavController) {
         modifier = Modifier.fillMaxWidth()
     )
     Column(modifier = Modifier) {
+        AppTopBar(title = "消息", onLeftIconClickListener = { navController.popBackStack() })
         Row( verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()) {
 
-            Text(text = "消息",fontSize = 18.sp, textAlign = TextAlign.Center,modifier= Modifier
-                .align(Alignment.CenterVertically)
-                .padding(bottom = 10.dp, top = 10.dp, start = 150.dp), color = themegreen)
             androidx.compose.foundation.Image(
                 painter = painterResource(id =R.drawable.msg_read),
                 contentDescription = "msg_read",
@@ -142,7 +142,7 @@ fun NoticeListItem(noticecontent:NoticeContent, onButtonClick:()->Unit){
 
         ) {
             Column(modifier = Modifier
-                .padding(bottom = 15.dp,top =15.dp)
+                .padding(bottom = 15.dp, top = 15.dp)
                 .align(Alignment.Top)
                 .clip(RoundedCornerShape(10.dp))
             ) {
@@ -154,7 +154,7 @@ fun NoticeListItem(noticecontent:NoticeContent, onButtonClick:()->Unit){
                 )
             }
             Column(modifier = Modifier
-                .padding(start = 10.dp, bottom = 5.dp, top =15.dp)
+                .padding(start = 10.dp, bottom = 5.dp, top = 15.dp)
                 .align(Alignment.Top)
             ) {
                 Text(text = noticecontent.id, fontSize = 16.sp, modifier = Modifier.padding(bottom = 3.dp))
@@ -166,7 +166,7 @@ fun NoticeListItem(noticecontent:NoticeContent, onButtonClick:()->Unit){
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .padding(top =15.dp)
+                .padding(top = 15.dp)
                 .align(Alignment.Top)
 
         ) {

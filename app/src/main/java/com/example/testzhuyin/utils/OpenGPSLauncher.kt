@@ -1,4 +1,4 @@
-package ccom.example.testzhuyin.utils
+package com.example.testzhuyin.utils
 
 import android.content.Intent
 import androidx.activity.compose.ManagedActivityResultLauncher

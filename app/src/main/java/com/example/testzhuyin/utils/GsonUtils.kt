@@ -1,11 +1,7 @@
-package com.sirui.ruiping.net.utils
+package com.example.testzhuyin.utils
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
-import java.util.*
-import kotlin.collections.ArrayList
 
 object GsonUtils {
 

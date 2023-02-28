@@ -7,6 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
@@ -114,6 +115,7 @@ fun MyScaffoldConfig(){
                         targetAssets = entry.arguments?.getString("targetAssets","")?: "",
                         latitude = (entry.arguments?.getFloat("latitude")?:0F).toDouble(),
                         longitude = (entry.arguments?.getFloat("longitude")?:0F).toDouble(),
+                        onBack ={ navController.popBackStack() }
                     )
                 }
 

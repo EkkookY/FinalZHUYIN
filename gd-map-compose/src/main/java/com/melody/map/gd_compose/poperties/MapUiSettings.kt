@@ -15,6 +15,12 @@ internal val DefaultMapUiSettings = MapUiSettings()
  * @param myLocationButtonEnabled 设置默认定位按钮是否显示，非必需设置。
  * @param isScaleControlsEnabled 比例尺控件是否可见，【注意】：如果想用isScaleControlsEnabled的话，showMapLogo必须为true
  */
+
+/**
+ * 老师，，此处调用的封装好的高德地图库，这里可以对手势交互的布尔值进行统一修改
+ * 开源文件地址：https://github.com/TheMelody/OmniMap-Compose
+ * */
+
 class MapUiSettings(
     val showMapLogo: Boolean = true,
     val isRotateGesturesEnabled: Boolean = false,

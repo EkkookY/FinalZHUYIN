@@ -5,7 +5,7 @@ import com.melody.map.gd_compose.poperties.MapProperties
 import com.melody.map.gd_compose.poperties.MapUiSettings
 import com.example.testzhuyin.model.EthnicityDataModel
 import com.example.testzhuyin.utils.SDKUtils
-import com.sirui.ruiping.net.utils.GsonUtils
+import com.example.testzhuyin.utils.GsonUtils
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

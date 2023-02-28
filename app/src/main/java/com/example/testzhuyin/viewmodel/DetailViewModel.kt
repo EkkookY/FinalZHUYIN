@@ -6,8 +6,8 @@ import android.provider.Settings
 import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.result.ActivityResult
-import ccom.example.testzhuyin.utils.openAppPermissionDetailsPage
-import ccom.example.testzhuyin.utils.safeLaunch
+import com.example.testzhuyin.utils.openAppPermissionDetailsPage
+import com.example.testzhuyin.utils.safeLaunch
 import com.amap.api.fence.GeoFenceClient
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
@@ -21,14 +21,17 @@ import com.example.testzhuyin.repo.DetailRepo
 import com.example.testzhuyin.utils.SDKUtils
 import kotlinx.coroutines.Dispatchers
 
-class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,DetailContract.Effect>(),
-    LocationSource, AMapLocationListener {
+class DetailViewModel: BaseViewModel<DetailContract.Event,DetailContract.State,DetailContract.Effect>(), LocationSource, AMapLocationListener {
+/**
+ * 首页中民族跳转的详细页viewmodel层
+ * 继承basevm的状态，方便统一
+ *
+ * */
 
     private val geoFenceClient = GeoFenceClient(SDKUtils.getApplicationContext())
     private var mLocationClient: AMapLocationClient? = null
     private var mLocationOption: AMapLocationClientOption? = null
     private var mListener: OnLocationChangedListener? = null
-
     private var  mRingtone: Ringtone?= null
 
     override fun createInitialState(): DetailContract.State {
