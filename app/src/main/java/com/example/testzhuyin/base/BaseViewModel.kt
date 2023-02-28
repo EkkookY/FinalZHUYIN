@@ -43,7 +43,7 @@ abstract class BaseViewModel<Event : IUiEvent, State : IUiState, Effect : IUiEff
     val effect = _effect.receiveAsFlow()
 
     /**
-     * 特定的用户操作,如：按钮点击，收藏，删除等
+     * 按钮点击，收藏，删除等
      */
     private val _event : MutableSharedFlow<Event> = MutableSharedFlow()
     val event = _event.asSharedFlow()
@@ -97,7 +97,7 @@ abstract class BaseViewModel<Event : IUiEvent, State : IUiState, Effect : IUiEff
     }
 
     /**
-     * 特定的用户操作,如：按钮点击，收藏，删除等
+     * 按钮点击，收藏，删除等
      */
     protected fun setEvent(event : Event) {
         val newEvent = event

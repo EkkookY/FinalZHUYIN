@@ -32,7 +32,9 @@ internal fun ShowOpenGPSDialog(onPositiveClick: () -> Unit, onDismiss: () -> Uni
     SimpleDialog(
         positiveButtonText = "开启定位",
         negativeButtonText = "取消",
+
         content = "定位失败，打开定位服务来获取位置信息",
+
         onPositiveClick = onPositiveClick,
         onNegativeClick = onDismiss,
         onDismiss = onDismiss
@@ -49,108 +51,6 @@ private fun SimpleDialog(
     onNegativeClick:()->Unit,
     onDismiss: () -> Unit
 ) {
-    Dialog(
-        onDismissRequest = onDismiss,
-        properties = DialogProperties(usePlatformDefaultWidth = false)
-    ) {
-        Surface(
-            modifier = Modifier
-                .width(283.dp)
-                .wrapContentHeight()
-                .clip(RoundedCornerShape(4.dp)),
-            shape = RoundedCornerShape(4.dp),
-            color = Color(0XFFFFFFFF)
-        ) {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                Box(
-                    modifier = Modifier
-                        .padding(19.dp)
-                        .fillMaxWidth()
-                ) {
-                    Text(
-                        text = content,
-                        style = TextStyle(
-                            color = Color(0XFF333333),
-                            fontSize = 13.sp
-                        ),
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .padding(start = 19.dp, end = 19.dp, bottom = 16.dp)
-                        .fillMaxWidth()
-                        .height(42.dp)
-                ) {
 
-                    SubmitButton(
-                        modifier = Modifier
-                            .weight(1F)
-                            .fillMaxWidth(),
-                        buttonHeight = 42.dp,
-                        background = Color(0XFFF0F2F5),
-                        textColor = Color(0xFF668EF7),
-                        buttonText = negativeButtonText,
-                        onClick = onNegativeClick
-                    )
-
-                    Spacer(modifier = Modifier.width(12.dp))
-
-                    SubmitButton(
-                        modifier = Modifier
-                            .weight(1F)
-                            .fillMaxWidth(),
-                        background = Color(0xFF668EF7),
-                        textColor = Color(0XFFFFFFFF),
-                        buttonHeight = 42.dp,
-                        buttonText = positiveButtonText,
-                        onClick = onPositiveClick
-                    )
-                }
-            }
-        }
-    }
 }
 
-@Composable
-private fun SubmitButton(
-    modifier: Modifier,
-    enabled: Boolean = true,
-    @StringRes buttonTextRes: Int? = null,
-    buttonText: String? = null,
-    buttonHeight: Dp,
-    shapeRadius: Dp = 4.dp,
-    fontSize: TextUnit = 14.sp,
-    background:Color = Color(0xFF668EF7),
-    textColor:Color = Color(0XFFFFFFFF),
-    onClick: () -> Unit
-) {
-    val interactionSource = remember { MutableInteractionSource() }
-    val indication = rememberRipple()
-    Box(modifier = modifier
-        .height(buttonHeight)
-        .background(
-            color = background,
-            shape = RoundedCornerShape(shapeRadius)
-        )
-        .clip(RoundedCornerShape(shapeRadius))
-        .clickable(
-            enabled = enabled,
-            interactionSource = interactionSource,
-            indication = indication
-        ) {
-            onClick.invoke()
-        }
-    ) {
-        Text(
-            modifier = Modifier.align(Alignment.Center),
-            text = if (null != buttonTextRes) stringResource(id = buttonTextRes) else buttonText
-                ?: "",
-            style = TextStyle(
-                color = textColor,
-                fontSize = fontSize,
-                fontWeight = FontWeight.Medium
-            )
-        )
-    }
-}

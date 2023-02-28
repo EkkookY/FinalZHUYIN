@@ -59,10 +59,9 @@ internal fun HomeMapScreen(openDetailPage: (LatLng, String)-> Unit) {
             uiState.ethnicityDataList.forEach {
                 Marker(
                     icon = BitmapDescriptorFactory.fromAsset(it.assets_name),
-                    tag = it.assets_name, // 设置tag
+                    tag = it.assets_name,
                     state = rememberMarkerState(position = LatLng(it.latitude,it.longitude)),
                     onClick = { marker ->
-                        // 获取assets里面的民族图片的名称f=
                         viewModel.openDetailPage(marker.position, marker.`object` as String)
                         true
                     }

@@ -25,7 +25,9 @@ import kotlinx.coroutines.flow.onEach
 internal fun InitDetailPageEffect(
     viewModel: DetailViewModel,
     uiState: DetailContract.State,
+
     cameraPositionState: CameraPositionState,
+
     latitude: Double,
     longitude: Double
 ) {
@@ -41,7 +43,6 @@ internal fun InitDetailPageEffect(
 
     LaunchedEffect(Unit) {
         snapshotFlow { reqGPSPermission.allPermissionsGranted }.collect {
-            // 从app应用权限开关页面，打开权限，需要再检查一下GPS开关
             viewModel.checkGpsStatus()
         }
     }
@@ -51,7 +52,7 @@ internal fun InitDetailPageEffect(
             if (!reqGPSPermission.allPermissionsGranted) {
                 reqGPSPermission.launchMultiplePermissionRequest()
             } else {
-                // 初始化创建地理围栏
+
                 viewModel.initGeoFence(latitude, longitude)
             }
         }

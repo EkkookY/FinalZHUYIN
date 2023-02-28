@@ -57,6 +57,7 @@ fun MyScaffoldConfig(){
             }
         },
         content = {
+            //此处可换成NavHost，失去动效，获得更快的加载速度
             AnimatedNavHost(
                 navController = navController,
                 startDestination = RouteKey.HOME.toString(),

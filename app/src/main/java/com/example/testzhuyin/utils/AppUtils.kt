@@ -29,12 +29,10 @@ fun openAppPermissionDetailsPage() {
         SDKUtils.getApplicationContext().startActivity(intent)
     } catch (e: ActivityNotFoundException) {
         try {
-            // 往设置页面跳
             SDKUtils.getApplicationContext().startActivity(Intent(Settings.ACTION_SETTINGS).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             })
         } catch (ignore: ActivityNotFoundException) {
-            // 有些手机跳系统设置也会崩溃
         }
     }
 }

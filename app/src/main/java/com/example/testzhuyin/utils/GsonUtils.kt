@@ -4,7 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
 object GsonUtils {
-
+/**
+ * 解析json数据
+ * 完成后通过状态通知界面刷新*/
     private val gsonBuilder: GsonBuilder by lazy { GsonBuilder() }
 
     private val gson: Gson by lazy { gsonBuilder.create() }

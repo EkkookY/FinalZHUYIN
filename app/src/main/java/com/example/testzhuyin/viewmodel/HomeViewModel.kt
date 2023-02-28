@@ -6,6 +6,11 @@ import com.example.testzhuyin.contract.HomeContract
 import com.example.testzhuyin.repo.HomeRepo
 import kotlinx.coroutines.Dispatchers
 
+/**
+ * 首页viewmodel层
+ * 同详细页一并继承basevm的状态，方便统一
+ *
+ * */
 class HomeViewModel : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
     override fun createInitialState(): HomeContract.State {
         return HomeContract.State(
