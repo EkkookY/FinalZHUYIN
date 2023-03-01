@@ -51,25 +51,44 @@ fun MinePage(modifier: Modifier=Modifier, navController: NavController, viewMode
     val scaffoldState = rememberBottomSheetScaffoldState()
     BottomSheetScaffold(
         sheetContent = {
-            Column(modifier = Modifier
-                .padding(top = 0.dp)
-                .fillMaxWidth()
-                .weight(1f)
-                .clip(shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
-                .background(
-                    color = green1,
-                    shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
-                )
-            ){
-                Column(Modifier.padding(top = 0.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painter = painterResource(id = R.drawable.mbf1), contentDescription ="mbf", contentScale = ContentScale.Crop,modifier = Modifier.size(400.dp,150.dp))
+            Box(modifier = Modifier.weight(1f)){
+                Row(
+                    Modifier
+                        .fillMaxWidth().padding(top = 10.dp)
+                ) {
                     Column(modifier = Modifier
-                        .background(
-                            color = white,
-                            shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
-                        )) {
-                        MineNameBar()
-                        CommunityContent()
+                        .padding(start = 16.dp)
+                        .align(Alignment.CenterVertically)
+                        .clip(RoundedCornerShape(23.dp))
+                    ) {
+                        Image(painter = painterResource(id = R.drawable.notice1), contentDescription ="user", contentScale = ContentScale.Crop,modifier = Modifier.size(45.dp,45.dp))
+                    }
+                    Column(modifier = Modifier
+                        .padding(start = 8.dp)
+                        .align(Alignment.CenterVertically)
+                    ) {
+                        Text(text = "username", fontSize = 20.sp)
+                    }
+                }
+                Column(modifier = Modifier
+                    .padding(top = 60.dp)
+                    .fillMaxWidth()
+                    .clip(shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+                    .background(
+                        color = white,
+                        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
+                    )
+                ){
+                    Column(Modifier.padding(top = 0.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(painter = painterResource(id = R.drawable.mbf1), contentDescription ="mbf", contentScale = ContentScale.Crop,modifier = Modifier.size(400.dp,150.dp))
+                        Column(modifier = Modifier
+                            .background(
+                                color = white,
+                                shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
+                            )) {
+                            MineNameBar()
+                            CommunityContent()
+                        }
                     }
                 }
             }
